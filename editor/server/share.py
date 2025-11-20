@@ -22,7 +22,7 @@ from . import models
 bp = Blueprint('share', __name__, url_prefix='/')
 
 
-rand_charset = string.ascii_letters + string.digits 
+rand_charset = string.ascii_lowercase + string.digits 
 
 def get_rand_name(digits=8):
     return ''.join(random.choice(rand_charset) for _ in range(digits))
