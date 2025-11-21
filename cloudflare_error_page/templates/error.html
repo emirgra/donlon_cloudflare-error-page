@@ -8,12 +8,14 @@
 <head>
 {% set error_code = params.error_code or 500 %}
 {% set title = params.title or 'Internal server error' %}
-<title>{{ params.html_title or ((error_code | string) + ': ' + title) }}</title>
+{% set html_title = params.html_title or ((error_code | string) + ': ' + title) %}
+<title>{{ html_title }}</title>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+{% block header %}{% endblock %}
 <link rel="stylesheet" id="cf_styles-css" href="{{resources_cdn}}/cdn-cgi/styles/main.css" />
 </head>
 <body>

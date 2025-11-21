@@ -10,7 +10,8 @@ from flask import (
     redirect,
 )
 
-from . import get_common_cf_template_params, render_cf_error_page
+from . import get_common_cf_template_params
+from cloudflare_error_page import render as render_cf_error_page
 
 root_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../')
 examples_dir = os.path.join(root_dir, 'examples')

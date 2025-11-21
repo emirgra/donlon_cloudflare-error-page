@@ -14,7 +14,6 @@ from sqlalchemy.orm import DeclarativeBase
 
 root_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../')
 sys.path.append(root_dir)
-from cloudflare_error_page import render as render_cf_error_page
 
 class Base(DeclarativeBase):
     pass

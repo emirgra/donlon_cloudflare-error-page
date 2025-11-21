@@ -7,8 +7,6 @@ from flask import (
     send_from_directory,
 )
 
-from . import get_common_cf_template_params, render_cf_error_page
-
 root_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../')
 res_folder = os.path.join(root_dir, 'editor/resources')
 
