@@ -125,5 +125,4 @@ def get(name: str):
         return template.render(base=cf_template,
                                params=params,
                                url=request.url,
-                               description='Cloudflare error page',
-                               resources_use_cdn=True)
+                               description='Cloudflare error page')

@@ -14,13 +14,6 @@ env = Environment(
 
 default_template = env.get_template("error.html")
 
-def get_resources_folder() -> str:
-    """
-    Get resources folder that contains stylesheet and icons for the error page.
-    If you pass resources_use_cdn=True to render(), local resources are not used.
-    """
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources')
-
 
 def fill_params(params: dict):
     if not params.get('time'):
@@ -30,7 +23,7 @@ def fill_params(params: dict):
         params['ray_id'] = secrets.token_hex(8)
 
 
-def render(params: dict, allow_html: bool=True, use_cdn: bool=True) -> str:
+def render(params: dict, allow_html: bool=True) -> str:
     """
     Render a customized Cloudflare error page.
     """
@@ -40,4 +33,4 @@ def render(params: dict, allow_html: bool=True, use_cdn: bool=True) -> str:
         params['what_happened'] = html.escape(params.get('what_happened', ''))
         params['what_can_i_do'] = html.escape(params.get('what_can_i_do', ''))
 
-    return default_template.render(params=params, resources_use_cdn=use_cdn)
+    return default_template.render(params=params)

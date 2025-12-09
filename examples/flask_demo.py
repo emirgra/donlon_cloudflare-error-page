@@ -14,21 +14,9 @@ from flask import (
 examples_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(examples_dir))
 
-from cloudflare_error_page import get_resources_folder, render as render_cf_error_page
+from cloudflare_error_page import render as render_cf_error_page
 
 app = Flask(__name__)
-
-# Resources required for the error page can be loaded from Cloudflare CDN. But in case of changes, you can set use_cdn = False to use bundled resources.
-use_cdn = True
-
-if not use_cdn:
-    res_folder = get_resources_folder()
-
-    # This handler is used to provide stylesheet and icon resources for the error page. If you pass use_cdn=True to render_cf_error_page
-    # or if your site is under proxy of Cloudflare (the cdn-cgi folder is already provided by Cloudflare), this handler can be removed.
-    @app.route('/cdn-cgi/<path:path>')
-    def cdn_cgi(path: str):
-        return send_from_directory(res_folder, path)
 
 
 @app.route('/')
@@ -66,7 +54,7 @@ def index():
     })
 
     # Render the error page
-    return render_cf_error_page(params, use_cdn=use_cdn), 500
+    return render_cf_error_page(params), 500
 
 
 if __name__ == '__main__':

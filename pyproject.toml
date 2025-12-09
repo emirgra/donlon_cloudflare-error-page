@@ -20,6 +20,5 @@ Homepage = "https://github.com/donlon/cloudflare-error-page"
 [tool.hatch.build]
 include = [
     "cloudflare_error_page/*.py",
-    "cloudflare_error_page/resources/*",
     "cloudflare_error_page/templates/*",
 ]

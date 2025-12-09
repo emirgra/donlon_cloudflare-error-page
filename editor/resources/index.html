@@ -299,10 +299,9 @@
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
       }
 
-      function renderEjs(params, use_cdn = true) {
+      function renderEjs(params) {
         return template({
           params: params,
-          resources_use_cdn: use_cdn
         })
       }
 

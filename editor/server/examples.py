@@ -53,4 +53,4 @@ def index(name: str):
     fill_cf_template_params(params)
 
     # Render the error page
-    return render_cf_error_page(params, use_cdn=True)
+    return render_cf_error_page(params)
