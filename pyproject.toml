@@ -22,3 +22,6 @@ include = [
     "cloudflare_error_page/*.py",
     "cloudflare_error_page/templates/*",
 ]
+
+[tool.hatch.version]
+path = "cloudflare_error_page/__init__.py"
