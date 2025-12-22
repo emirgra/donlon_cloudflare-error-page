@@ -19,6 +19,10 @@ Here's an online editor to create customized error pages. Try it out [here](http
 Install `cloudflare-error-page` with pip.
 
 ``` Bash
+# Install from PyPI
+pip install cloudflare-error-page
+
+# Or, install the latest version from this repo
 pip install git+https://github.com/donlon/cloudflare-error-page.git
 ```
 

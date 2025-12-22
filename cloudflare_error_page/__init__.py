@@ -13,14 +13,14 @@ else:
 
 from jinja2 import Environment, PackageLoader, Template, select_autoescape
 
-env = Environment(
+jinja_env = Environment(
     loader=PackageLoader(__name__),
     autoescape=select_autoescape(),
     trim_blocks=True,
     lstrip_blocks=True,
 )
 
-base_template: Template = env.get_template("template.html")
+base_template: Template = jinja_env.get_template('template.html')
 
 
 class ErrorPageParams(TypedDict):
@@ -31,7 +31,7 @@ class ErrorPageParams(TypedDict):
         for_text: NotRequired[str]  # renamed to avoid Python keyword conflict
 
     class StatusItem(TypedDict):
-        status: NotRequired[Literal["ok", "error"]]
+        status: NotRequired[Literal['ok', 'error']]
         location: NotRequired[str]
         name: NotRequired[str]
         status_text: NotRequired[str]
@@ -57,7 +57,7 @@ class ErrorPageParams(TypedDict):
     cloudflare_status: NotRequired[StatusItem]
     host_status: NotRequired[StatusItem]
 
-    error_source: NotRequired[Literal["browser", "cloudflare", "host"]]
+    error_source: NotRequired[Literal['browser', 'cloudflare', 'host']]
 
     what_happened: NotRequired[str]
     what_can_i_do: NotRequired[str]
@@ -97,7 +97,7 @@ def render(params: ErrorPageParams,
 
     if not params.get('time'):
         utc_now = datetime.now(timezone.utc)
-        params['time'] = utc_now.strftime("%Y-%m-%d %H:%M:%S UTC")
+        params['time'] = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
     if not params.get('ray_id'):
         params['ray_id'] = secrets.token_hex(8)
     if not allow_html:
@@ -106,5 +106,5 @@ def render(params: ErrorPageParams,
 
     return template.render(params=params, *args, **kwargs)
 
-__version__ = "0.1.0"
-__all__ = ['base_template', 'render']
+__version__ = '0.2.0'
+__all__ = ['jinja_env', 'base_template', 'render']
